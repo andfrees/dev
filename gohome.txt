@@ -1,0 +1,96 @@
+vue + webpack + vue-router + vue-resource vue-loader
+
+services.msc
+tasklist | find /I "sshd.exe"
+tasklist | find /I "Insight3.exe" && taskkill /T /im Insight3.exe
+WIN: netstat -an      arp -a
+plink.exe -pw %PASSWORD% %USER%@%linux_ip% cd /opt/analysis/; sh as.sh
+devenv "D:\winSSHD\win-sshd-master\sshd.sln"  /Clean "Release|Win32"
+devenv "D:\winSSHD\win-sshd-master\sshd.sln"  /Rebuild "Debug|Win32"
+devenv "D:\winSSHD\win-sshd-master\sshd.sln"  /Rebuild "Release|Win32"
+svn checkout https --username user
+repleaseInLine : sed 's/old/new/g'
+delSpaceInLine : sed -i '/^$/d' test.txt
+delSpaceInLine : sed -i "/^\s*$/d" test.txt
+iptables -t nat -A PREROUTING -d IP1 -p tcp --dport PORT1 -j DNAT --to-destination IP2:PORT2
+iptables -t nat -L --line-numbers
+iptables -t nat -D PREROUTING 2
+netstat –apn
+select * from sqlite_master
+SELECT name FROM sqlite_temp_master
+PRAGMA table_info('warehouse')
+PRAGMA cache_size =80000 
+pragma default_cache_size=80000  
+select * from table; 
+create index if not exists diff on table(id);
+DROP INDEX IF EXISTS diffs;
+PRAGMA table_info(difftable);
+CREATE TABLE table_name( column1 datatype, column2 datatype, PRIMARY KEY( one or more columns ));
+SELECT COUNT(column_name) FROM   table_name WHERE  CONDITION;
+SELECT column1, column2 FROM table_name WHERE column_name EXISTS (SELECT * FROM table_name );
+INSERT INTO table_name( column1, column2....columnN) VALUES ( value1, value2....valueN);
+sql = "create table if not exists taskList(%s) " % tables
+sql = "insert or ignore into taskList(%s) values(%s)" % (tittle,content)
+sql = "select * from taskList"
+sql = "select * from diffTable where id = '%s' " % inputid
+sql = "delete from taskList where rowid=%d"%len(result)
+sql = "select rowid,* from taskList"
+sql = "select 'constSTR='||rowid from taskList"
+sql = "select 'const='||rowid from taskList where text like '%STRING%'"
+sql = "select taskList.id,todoList.id from taskList,todoList where taskList.id=todoList.id"
+sql = "select taskList.id,todoList.id from taskList,todoList where taskList.id=todoList.id"
+sql = "select ename, sal from TbEmp where sal=(select max(sal) from TbEmp)"
+sql = "select dno, count(dno) from TbEmp group by dno"
+sql = "select ename, sal from TbEmp where sal=(select max(sal) from TbEmp where mgr is not null)"
+sql = "select ename, sal from TbEmp order by sal desc limit 3 offset 3"
+
+SQLiteSpy
+ifconfig  | grep "inet addr" | grep -v 127
+gcc -fPIC -shared -o libs.so test.c
+LD_LIBRARY_PATH=. ./test.out
+crontab -l
+crontab -e
+shutdown -s -t 0
+shutdown -r -t 0
+python 
+    verList = re.findall(r'CONST((?:\d|[A-Z]){1,}).TXT', strs.upper())
+    verList = re.findall(r'(20(?:\d){6})', strs.upper())
+linux c defualt #include <regex.h>
+    regex_t reg;char ebuff[256];char *reg_str = "\\((.*)\\)";
+    int ret = regcomp(&reg, reg_str, REG_EXTENDED | REG_ICASE);
+    regerror(ret, &reg, ebuff, 256);
+    int ret = regexec(&reg, tarSrc, 5, findRm, 0); // char* tarSrc
+    char* getSrc = strndup(tarSrc+findRm[i].rm_so, findRm[i].rm_eo-findRm[i].rm_so);
+    regfree(&reg);
+    while (0 < recv(*SockTogo, bufferData, BUFFSIZE - 1, MSG_DONTWAIT | MSG_PEEK))
+EXCEL 单元格选择某个值，整行都变成红色 ,么有直接工式需要手动设置
+EXCEL 规则：单元格等于某个值(=$I1=2050)，格式：背景颜色(红色) 应用于:整行(=$I1=2050)
+EXCEL 设置当前单元格满足条件背景色，条件格式，新增规则，只为包含以下内容的单元格设置格式
+EXCEL 查看两个单元格数据是否相等，大小写敏感 =EXACT(A2,B2)
+EXCEL 查找A单元格的内容，在B列是否都存在  =VLOOKUP(D7,$C$7:$C$D,1,FALSE)
+EXCEL 判断某个单元格是否包含某个字符串    =IF(COUNTIF(A1,"TAR"),"OK","NG")
+
+
+notepad
+[aA]dd by\s{1,}[a-zA-Z0-9]{4,}\s
+[mM]odify by\s{1,}[a-zA-Z0-9]{4,}\s
+[mM]odified by\s{1,}[a-zA-Z][wW][xX]\d{6}\s|[mM]odified by\s{1,}[a-zA-Z]\d{8}\s
+\s[a-zA-Z][0123]\d{5,8}\s|\s[a-zA-Z][wW][xX]\d{6}\s
+
+cmder-master\vendor\init.bat 
+@prompt $E[1;32;40m$P$S{git}$S$_$E[1;30;40m{lamb}$S$E[0m
+@prompt $E[1;32;40m$P$S#$S$ 
+
+function ReadINIfile()
+  { 
+    ReadINI=`awk -F '=' '/['$SECTION']/{a=1}a==1&&$1~/'$ITEM'/{print $2;exit}' $INIFILE`
+    echo "ReadINI = $ReadINI"
+}
+
+function WriteINIfile()
+{
+    WriteINI=`sed -i "/^\[$SECTION\]/,/^\[/{/^\[$SECTION\]/b;/^\[/b;s/^$ITEM*=.*/$ITEM=$NEWVAL/g;}" $INIFILE`
+    echo "WriteINIfile = $WriteINI"
+}
+getINIfile ${INIFILE} ${SECTION} ${ITEM}
+setINIfile ${INIFILE} ${INIFILE} ${INIFILE} ${NEWVAL}
