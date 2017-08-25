@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HOMEPAGE</title>
+
+<style type="text/css">
+    *{ margin: 0; padding: 0; }
+    .outer{
+        width:100%;
+        height:100%;
+        overflow:auto;
+        border:1px solid black;
+        background:#f5f5d5;
+    }
+    .inner{
+        width:auto;
+        height:auto;
+        overflow:auto;
+        border:1px solid gray;
+    }
+    .sider,.siter {
+        width:100%;
+        height:auto;
+        overflow:auto;
+        position:relative;
+        background:yellow;
+    }
+.left{
+        float: left;
+        width: 71%;
+        height:auto;
+        background:gold;
+    }
+.right{
+        float: right;
+        width: 29%;
+        height:auto;
+        background:pink;
+}
+
+.font{
+line-height:150%;
+text-align:center;
+font-size:21px;
+font-family:Helvetica,Roboto,Arial,sans-serif;
+color:#333;
+}
+</style>
+
+</head>
+
+<body>
+
+<div  id="app" class="outer">
+    <div class="inner">
+    <p class="font">navier</p>
+    </div>
+
+    <div class="inner">
+    <p class="font">header</p>
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage" >reverseMessage</button>
+    </div>
+
+    <div class="inner">
+        <div class="siter left">
+            <p class="font"  v-for="item in items">siter:{{item.title}} {{item.content}} {{item.time}} </p>
+        </div>
+
+        <div class="sider right">
+            <p class="font" v-for="item in items">sider:{{item.id}}</p>
+        </div>
+    </div>
+
+    <div class="inner">
+    <p class="font">footer</p>
+    </div>
+
+</div>
+
+   <script type="text/javascript" src="vue.js" charset="utf-8"></script>
+   <script type="text/javascript" src="axios.js" charset="utf-8"></script>
+   
+<script type="text/javascript">
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!',
+    items: [ {id: 0,title: 'hometop',content: 'TEXT',time: '2017-08-16 21:50;20'} ], // {id: 0,title: 'hometop',content: 'TEXT',time: '2017-08-16 21:50;20'},
+  },
+  methods: {
+    reverseMessage: function () {
+        this.message = this.message.split('').reverse().join('');
+        var that = this;
+        // Make a request for a user with a given ID 
+        axios.get('/data.php?ID=12345&name=hao&age=18')
+          .then(function (response) {
+            console.log(response);
+            //console.log(response.data);
+            //that.items = response.data;// NG id derict set value it not show
+            while(that.items.length) that.items.pop();
+            //var dataItems = JSON.parse(response.data);
+            var dataItems = response.data;
+            //我们都知道json是由老道在js对象语法格式上发明而来的，其比js的对象格式更加严谨，单双引号搞错都不行
+            //而且json也就那么几种固定的返回格式，直接{}对象形式，还有一种对象数组形式[{},{}],
+            //还有一种对象中的数组{"",[]}额，我记得是一共就这三种情况，晓得这些基础知识以后严格排查。
+
+           for (var i = 0; i < dataItems.length; i++) {
+            (function(idata, items) {
+              items.push(idata);
+            })(dataItems[i], that.items);
+          } 
+
+            console.log(that.items);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+  }
+})
+</script>
+
+</body>
+
+</html>
